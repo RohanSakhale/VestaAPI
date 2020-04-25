@@ -61,6 +61,7 @@ class VestaAPI
         $this->key      = (string) $allServers[$server]['key'];
         $this->host     = (string) $allServers[$server]['host'];
         $this->userName = (string) $allServers[$server]['username'];
+        $this->password = (string) $allServers[$server]['password'];
 
         return $this;
     }
@@ -98,11 +99,16 @@ class VestaAPI
     public function send($cmd)
     {
         $postVars = [
-            'user'       => $this->userName,
-            'password'   => $this->key,
             'returncode' => $this->returnCode,
             'cmd'        => $cmd,
         ];
+        if (isset($this->key)) {
+            $postVars['hash'] = $this->key;
+        } else {
+            $postVars['user']     = $this->userName;
+            $postVars['password'] = $this->password;
+
+        }
         $args = func_get_args();
         foreach ($args as $num => $arg) {
             if (0 === $num) {

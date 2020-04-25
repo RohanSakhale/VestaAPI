@@ -20,7 +20,8 @@ return [
         'default' => [
             'host'     => env('VESTA_HOST', '0.0.0.0'),
             'username' => env('VESTA_USERNAME', 'admin'),
-            'key'      => env('VESTA_KEY', 'GENERATED API KEY'),
+            'password' => env('VESTA_PASSWORD', 'admin'),
+            'key'      => env('VESTA_KEY', ''),
         ],
     ],
 
