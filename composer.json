@@ -1,0 +1,48 @@
+{
+  "name": "saiashirwadinformatia/vesta-cp-api",
+  "description": "VestaCP client for Laravel",
+  "keywords": [
+    "framework",
+    "laravel",
+    "hosting",
+    "vesta",
+    "panel"
+  ],
+  "type": "library",
+  "require": {
+    "guzzlehttp/guzzle": "^6.5",
+    "laravel/framework": "^7.0"
+  },
+  "license": "GPL-3.0",
+  "support": {
+    "issues": "https://github.com/tabuna/VestaAPI/issues",
+    "source": "https://github.com/tabuna/VestaAPI"
+  },
+  "authors": [
+    {
+      "name": "Alexandr Chernyaev",
+      "email": "bliz48rus@gmail.com"
+    },
+    {
+      "name": "Rohan Rajan Sakhale",
+      "email": "rs@saiashirwad.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "VestaCP\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "VestaCP\\Providers\\VestaServiceProvider"
+      ],
+      "aliases": {
+        "Dashboard": "VestaCP\\Facades\\Vesta"
+      }
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
