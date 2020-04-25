@@ -9,11 +9,9 @@ Powerful API client hosting VestaCP for Laravel
 </p>
 
 <p align="center">
-<a href="https://codeclimate.com/github/tabuna/VestaAPI"><img src="https://codeclimate.com/github/tabuna/VestaAPI/badges/gpa.svg" /></a>
-<a href="https://styleci.io/repos/89877448"><img src="https://styleci.io/repos/89877448/shield?branch=master"/></a>
-<a href="https://packagist.org/packages/tabuna/vesta-api"><img src="https://poser.pugx.org/tabuna/vesta-api/v/stable"/></a>
-<a href="https://packagist.org/packages/tabuna/vesta-api"><img src="https://poser.pugx.org/tabuna/vesta-api/downloads"/></a>
-<a href="https://packagist.org/packages/tabuna/vesta-api"><img src="https://poser.pugx.org/tabuna/vesta-api/license"/></a>
+<a href="https://packagist.org/packages/saiashirwadinformatia/vesta-cp-api"><img src="https://poser.pugx.org/saiashirwadinformatia/vesta-cp-api/v/stable"/></a>
+<a href="https://packagist.org/packages/saiashirwadinformatia/vesta-cp-api"><img src="https://poser.pugx.org/saiashirwadinformatia/vesta-cp-api/downloads"/></a>
+<a href="https://packagist.org/packages/saiashirwadinformatia/vesta-cp-api"><img src="https://poser.pugx.org/saiashirwadinformatia/vesta-cp-api/license"/></a>
 </p>
 
 
@@ -52,6 +50,7 @@ Simple usage
 ```php
 use VestaCP\Facades\Vesta;
 
-$backups = Vesta::server('default')->setUserName('admin')->listUserBackups();
+$backups = Vesta::server('default')->listUserBackups();
+$accounts = Vesta::server('default')->listUserAccount();
 
 ```
