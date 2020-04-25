@@ -1,8 +1,9 @@
 # VestaCP API <img height="40"  src="https://cloud.githubusercontent.com/assets/5102591/25568951/b69285b4-2e15-11e7-9bd1-c91a04fb7f97.png">
 
-<p align="center">
+Forked from - [github-tabuna/VestaAPI](https://github.com/tabuna/VestaAPI)
+
 Powerful API client hosting VestaCP for Laravel
-</p>
+
 
 <p align="center">
 <a href="https://packagist.org/packages/saiashirwadinformatia/vesta-cp-api"><img src="https://poser.pugx.org/saiashirwadinformatia/vesta-cp-api/v/stable"/></a>
@@ -23,6 +24,7 @@ $ composer require saiashirwadinformatia/vesta-cp-api
 ```
 
 Publication
+
 ```sh
 $ php artisan vendor:publish --provider="VestaCP\Providers\VestaServiceProvider"
 ```
@@ -50,3 +52,7 @@ $backups = Vesta::server('default')->listUserBackups();
 $accounts = Vesta::server('default')->listUserAccount();
 
 ```
+
+# LICENSE
+
+[GPL-3.0](LICENSE)
