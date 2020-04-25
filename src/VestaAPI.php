@@ -60,7 +60,7 @@ class VestaAPI
 
         $this->key      = (string) $allServers[$server]['key'];
         $this->host     = (string) $allServers[$server]['host'];
-        $this->username = (string) $allServers[$server]['username'];
+        $this->userName = (string) $allServers[$server]['username'];
 
         return $this;
     }
