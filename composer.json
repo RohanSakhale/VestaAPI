@@ -15,8 +15,8 @@
   },
   "license": "GPL-3.0",
   "support": {
-    "issues": "https://github.com/tabuna/VestaAPI/issues",
-    "source": "https://github.com/tabuna/VestaAPI"
+    "issues": "https://gitlab.com/SaiAshirwadInformatia/vestacp-api/-/issues",
+    "source": "https://gitlab.com/SaiAshirwadInformatia/vestacp-api"
   },
   "authors": [
     {
