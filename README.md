@@ -1,9 +1,5 @@
-<p align="center">
-<img width="150"  src="https://cloud.githubusercontent.com/assets/5102591/25568951/b69285b4-2e15-11e7-9bd1-c91a04fb7f97.png">
-</p>
+# VestaCP API <img height="40"  src="https://cloud.githubusercontent.com/assets/5102591/25568951/b69285b4-2e15-11e7-9bd1-c91a04fb7f97.png">
 
-
-#
 <p align="center">
 Powerful API client hosting VestaCP for Laravel
 </p>
@@ -18,7 +14,7 @@ Powerful API client hosting VestaCP for Laravel
 ## Installation
 
 
-#### Via Composer
+### Via Composer
 
 Going your project directory on shell and run this command: 
 
@@ -27,20 +23,20 @@ $ composer require saiashirwadinformatia/vesta-cp-api
 ```
 
 Publication
-```php
-php artisan vendor:publish --provider="VestaCP\Providers\VestaServiceProvider"
+```sh
+$ php artisan vendor:publish --provider="VestaCP\Providers\VestaServiceProvider"
 ```
 
 Generate new API key
 
 ```bash
-bash /usr/local/vesta/bin/v-generate-api-key
+$ bash /usr/local/vesta/bin/v-generate-api-key
 ```
 
 List Existing API Key's
 
 ```bash
-ls -l /usr/local/vesta/data/keys/
+$ ls -l /usr/local/vesta/data/keys/
 ```
 
 ## Usage
