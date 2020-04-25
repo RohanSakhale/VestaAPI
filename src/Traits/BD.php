@@ -1,6 +1,6 @@
 <?php
 
-namespace VestaAPI\Services;
+namespace VestaCP\Traits;
 
 trait BD
 {
@@ -19,9 +19,8 @@ trait BD
     /**
      * Change user database.
      *
-     * @param $database
-     * @param $dbuser
-     *
+     * @param  $database
+     * @param  $dbuser
      * @return mixed
      */
     public function changeDbUser($database, $dbuser)
@@ -32,9 +31,8 @@ trait BD
     /**
      * Change data base password.
      *
-     * @param $database
-     * @param $password
-     *
+     * @param  $database
+     * @param  $password
      * @return mixed
      */
     public function changeDbPassword($database, $password)
@@ -45,15 +43,14 @@ trait BD
     /**
      * List Only BD.
      *
-     * @param $database
-     *
+     * @param  $database
      * @return mixed
      */
     public function listOnlyBD($database)
     {
         $this->returnCode = 'no';
-        $listBd = $this->send('v-list-database', $this->userName, $database, 'json');
-        $data = json_decode($listBd, true);
+        $listBd           = $this->send('v-list-database', $this->userName, $database, 'json');
+        $data             = json_decode($listBd, true);
 
         return $data;
     }
@@ -61,12 +58,11 @@ trait BD
     /**
      * Add date base.
      *
-     * @param        $database
-     * @param        $dbuser
-     * @param        $password
-     * @param string $type
-     * @param        $charset
-     *
+     * @param  $database
+     * @param  $dbuser
+     * @param  $password
+     * @param  string      $type
+     * @param  $charset
      * @return mixed
      */
     public function addDateBase($database, $dbuser, $password, $type, $charset)
@@ -78,8 +74,7 @@ trait BD
     /**
      * Delete data base.
      *
-     * @param $database
-     *
+     * @param  $database
      * @return mixed
      */
     public function deleteDateBase($database)

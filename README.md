@@ -25,27 +25,33 @@ Powerful API client hosting VestaCP for Laravel
 Going your project directory on shell and run this command: 
 
 ```sh
-$ composer require tabuna/vesta-api
+$ composer require saiashirwadinformatia/vesta-cp-api
 ```
 
 Publication
 ```php
-php artisan vendor:publish --provider="VestaAPI\Providers\VestaServiceProvider"
+php artisan vendor:publish --provider="VestaCP\Providers\VestaServiceProvider"
 ```
 
-Generate api key
+Generate new API key
 
 ```bash
 bash /usr/local/vesta/bin/v-generate-api-key
 ```
 
+List Existing API Key's
+
+```bash
+ls -l /usr/local/vesta/data/keys/
+```
 
 ## Usage
 
 	
 Simple usage
 ```php
-use VestaAPI\Facades\Vesta;
+use VestaCP\Facades\Vesta;
 
-$backups = Vesta::server('testVDS')->setUserName('MyUserName')->listUserBackups();
+$backups = Vesta::server('default')->setUserName('admin')->listUserBackups();
 
+```

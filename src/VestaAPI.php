@@ -1,9 +1,16 @@
 <?php
 
-namespace VestaAPI\Services;
+namespace VestaCP;
 
 use GuzzleHttp\Client;
-use VestaAPI\Exceptions\VestaExceptions;
+use VestaCP\Exceptions\VestaExceptions;
+use VestaCP\Traits\BD;
+use VestaCP\Traits\Cron;
+use VestaCP\Traits\DNS;
+use VestaCP\Traits\FileSystem;
+use VestaCP\Traits\Service;
+use VestaCP\Traits\User;
+use VestaCP\Traits\Web;
 
 class VestaAPI
 {
@@ -32,13 +39,11 @@ class VestaAPI
     private $host = '';
 
     /**
-     * @param string $server
-     *
+     * @param  string       $server
      * @throws \Exception
-     *
      * @return $this
      */
-    public function server($server = '')
+    public function server($server = 'default')
     {
         if (empty($server)) {
             throw new \Exception('Server is not specified');
@@ -53,16 +58,16 @@ class VestaAPI
             throw new \Exception('Specified server config does not contain host or key');
         }
 
-        $this->key = (string) $allServers[$server]['key'];
-        $this->host = (string) $allServers[$server]['host'];
+        $this->key      = (string) $allServers[$server]['key'];
+        $this->host     = (string) $allServers[$server]['host'];
+        $this->username = (string) $allServers[$server]['username'];
 
         return $this;
     }
 
     /**
-     * @param string $server
-     * @param array  $config
-     *
+     * @param  string $server
+     * @param  array  $config
      * @return bool
      */
     private function keysCheck($server, $config)
@@ -71,10 +76,8 @@ class VestaAPI
     }
 
     /**
-     * @param string $userName
-     *
+     * @param  string       $userName
      * @throws \Exception
-     *
      * @return $this
      */
     public function setUserName($userName = '')
@@ -88,10 +91,8 @@ class VestaAPI
     }
 
     /**
-     * @param string $cmd
-     *
+     * @param  string            $cmd
      * @throws VestaExceptions
-     *
      * @return string
      */
     public function send($cmd)
@@ -104,14 +105,14 @@ class VestaAPI
         ];
         $args = func_get_args();
         foreach ($args as $num => $arg) {
-            if ($num === 0) {
+            if (0 === $num) {
                 continue;
             }
-            $postVars['arg'.$num] = $args[$num];
+            $postVars['arg' . $num] = $args[$num];
         }
 
         $client = new Client([
-            'base_uri'    => 'https://'.$this->host.':8083/api/',
+            'base_uri'    => 'https://' . $this->host . ':8083/api/',
             'timeout'     => 10.0,
             'verify'      => false,
             'form_params' => $postVars,
@@ -121,7 +122,7 @@ class VestaAPI
             ->getBody()
             ->getContents();
 
-        if ($this->returnCode == 'yes' && $query != 0) {
+        if ('yes' == $this->returnCode && 0 != $query) {
             throw new VestaExceptions($query);
         }
 

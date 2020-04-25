@@ -1,6 +1,6 @@
 <?php
 
-namespace VestaAPI\Services;
+namespace VestaCP\Traits;
 
 trait DNS
 {
@@ -12,8 +12,8 @@ trait DNS
     public function listDNS()
     {
         $this->returnCode = 'no';
-        $listDns = $this->send('v-list-dns-domains', $this->userName, 'json');
-        $data = json_decode($listDns, true);
+        $listDns          = $this->send('v-list-dns-domains', $this->userName, 'json');
+        $data             = json_decode($listDns, true);
 
         return $data;
     }
@@ -21,15 +21,14 @@ trait DNS
     /**
      * List Only DNS.
      *
-     * @param $dns
-     *
+     * @param  $dns
      * @return mixed
      */
     public function listOnlyDNS($dns)
     {
         $this->returnCode = 'no';
-        $listDNS = $this->send('v-list-dns-domain', $this->userName, $dns, 'json');
-        $data = json_decode($listDNS, true);
+        $listDNS          = $this->send('v-list-dns-domain', $this->userName, $dns, 'json');
+        $data             = json_decode($listDNS, true);
 
         return $data;
     }
@@ -37,8 +36,7 @@ trait DNS
     /**
      * Delete DNS record domain.
      *
-     * @param $domain
-     *
+     * @param  $domain
      * @return mixed
      */
     public function deleteDNDDomain($domain)
@@ -49,9 +47,8 @@ trait DNS
     /**
      * Delete DNS record.
      *
-     * @param $domain
-     * @param $recordId
-     *
+     * @param  $domain
+     * @param  $recordId
      * @return mixed
      */
     public function deleteDNSRecord($domain, $recordId)
@@ -62,13 +59,12 @@ trait DNS
     /**
      * Add DNS domain.
      *
-     * @param      $domain
-     * @param      $ip
-     * @param      $ns1
-     * @param      $ns2
-     * @param null $ns3
-     * @param null $ns4
-     *
+     * @param  $domain
+     * @param  $ip
+     * @param  $ns1
+     * @param  $ns2
+     * @param  null      $ns3
+     * @param  null      $ns4
      * @return mixed
      */
     public function addDNSDomain($domain, $ip, $ns1, $ns2, $ns3 = null, $ns4 = null)
@@ -80,9 +76,8 @@ trait DNS
     /**
      * Set expiriation date.
      *
-     * @param $domain
-     * @param $exp
-     *
+     * @param  $domain
+     * @param  $exp
      * @return mixed
      */
     public function changeDNSDomainExp($domain, $exp)
@@ -93,9 +88,8 @@ trait DNS
     /**
      * Set TTL.
      *
-     * @param $domain
-     * @param $ttl
-     *
+     * @param  $domain
+     * @param  $ttl
      * @return mixed
      */
     public function changeDNSDomainTtl($domain, $ttl)
@@ -106,15 +100,14 @@ trait DNS
     /**
      * List DNS record domain.
      *
-     * @param $domain
-     *
+     * @param  $domain
      * @return mixed
      */
     public function listDNSRecords($domain)
     {
         $this->returnCode = 'no';
-        $data = $this->send('v-list-dns-records', $this->userName, $domain, 'json');
-        $data = json_decode($data, true);
+        $data             = $this->send('v-list-dns-records', $this->userName, $domain, 'json');
+        $data             = json_decode($data, true);
 
         return $data;
     }
@@ -122,11 +115,10 @@ trait DNS
     /**
      * Change DNS domain record.
      *
-     * @param $domain
-     * @param $recordId
-     * @param $val
-     * @param $priority
-     *
+     * @param  $domain
+     * @param  $recordId
+     * @param  $val
+     * @param  $priority
      * @return mixed
      */
     public function changeDNSDomainRecord($domain, $recordId, $val, $priority)

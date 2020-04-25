@@ -1,14 +1,13 @@
 <?php
 
-namespace VestaAPI\Exceptions;
+namespace VestaCP\Exceptions;
 
 use Exception;
 
 class VestaExceptions extends Exception
 {
     /**
-     * @param Exception $e
-     *
+     * @param  Exception $e
      * @return $this
      */
     public static function render(Exception $e)

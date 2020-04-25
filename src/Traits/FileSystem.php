@@ -1,6 +1,6 @@
 <?php
 
-namespace VestaAPI\Services;
+namespace VestaCP\Traits;
 
 trait FileSystem
 {
@@ -24,9 +24,8 @@ trait FileSystem
     ];
 
     /**
-     * @param $src
-     * @param $dst
-     *
+     * @param  $src
+     * @param  $dst
      * @return mixed
      */
     public function moveFile($src, $dst)
@@ -37,21 +36,19 @@ trait FileSystem
     }
 
     /**
-     * @param string $path
-     *
+     * @param  string  $path
      * @return mixed
      */
     public function openFile($path = '')
     {
-        $path = '/home/'.$this->userName.'/'.$path;
+        $path             = '/home/' . $this->userName . '/' . $path;
         $this->returnCode = 'no';
 
         return $this->send('v-open-fs-file', $this->userName, $path);
     }
 
     /**
-     * @param $patch
-     *
+     * @param  $patch
      * @return mixed
      */
     public function addDir($patch)
@@ -62,8 +59,7 @@ trait FileSystem
     }
 
     /**
-     * @param $patch
-     *
+     * @param  $patch
      * @return mixed
      */
     public function addFile($patch)
@@ -74,23 +70,21 @@ trait FileSystem
     }
 
     /**
-     * @param $srcFile
-     * @param $permissions
-     *
+     * @param  $srcFile
+     * @param  $permissions
      * @return mixed
      */
     public function changePermission($srcFile, $permissions)
     {
-        $srcFile = '/home/'.$this->userName.'/'.$srcFile;
+        $srcFile          = '/home/' . $this->userName . '/' . $srcFile;
         $this->returnCode = 'no';
 
         return $this->send('v-change-fs-file-permission', $this->userName, $srcFile, $permissions);
     }
 
     /**
-     * @param $srcDir
-     * @param $dstDir
-     *
+     * @param  $srcDir
+     * @param  $dstDir
      * @return mixed
      */
     public function copyDir($srcDir, $dstDir)
@@ -101,9 +95,8 @@ trait FileSystem
     }
 
     /**
-     * @param $srcDir
-     * @param $dstDir
-     *
+     * @param  $srcDir
+     * @param  $dstDir
      * @return mixed
      */
     public function copyFile($srcDir, $dstDir)
@@ -114,35 +107,32 @@ trait FileSystem
     }
 
     /**
-     * @param $dstDir
-     *
+     * @param  $dstDir
      * @return mixed
      */
     public function deleteDir($dstDir)
     {
         $this->returnCode = 'no';
-        $dstDir = '/home/'.$this->userName.'/'.$dstDir;
+        $dstDir           = '/home/' . $this->userName . '/' . $dstDir;
 
         return $this->send('v-delete-fs-dir', $this->userName, $dstDir);
     }
 
     /**
-     * @param $dstFile
-     *
+     * @param  $dstFile
      * @return mixed
      */
     public function deleteFile($dstFile)
     {
         $this->returnCode = 'no';
-        $dstFile = '/home/'.$this->userName.'/'.$dstFile;
+        $dstFile          = '/home/' . $this->userName . '/' . $dstFile;
 
         return $this->send('v-delete-fs-file', $this->userName, $dstFile);
     }
 
     /**
-     * @param $srcFile
-     * @param $dstDir
-     *
+     * @param  $srcFile
+     * @param  $dstDir
      * @return mixed
      */
     public function extractArchive($srcFile, $dstDir)
@@ -153,28 +143,26 @@ trait FileSystem
     }
 
     /**
-     * @param $path
-     *
+     * @param  $path
      * @return mixed
      */
     public function listDirectory($path = '')
     {
-        $path = '/home/'.$this->userName.'/'.$path;
+        $path             = '/home/' . $this->userName . '/' . $path;
         $this->returnCode = 'no';
-        $responseVesta = $this->send('v-list-fs-directory', $this->userName, $path);
+        $responseVesta    = $this->send('v-list-fs-directory', $this->userName, $path);
 
         return $this->parseListing($responseVesta);
     }
 
     /**
-     * @param $raw
-     *
+     * @param  $raw
      * @return array
      */
     public function parseListing($raw)
     {
-        $raw = explode(PHP_EOL, $raw);
-        $raw = array_filter($raw);
+        $raw  = explode(PHP_EOL, $raw);
+        $raw  = array_filter($raw);
         $data = [];
 
         foreach ($raw as $o) {

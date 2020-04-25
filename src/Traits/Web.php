@@ -1,32 +1,31 @@
 <?php
 
-namespace VestaAPI\Services;
+namespace VestaCP\Traits;
 
 trait Web
 {
     /**
      * List Web Domains.
      *
-     * @param $domain
-     *
+     * @param  $domain
      * @return mixed
      */
     public function listEditWebDomain($domain)
     {
         $this->returnCode = 'no';
-        $answer = $this->send('v-list-web-domain', $this->userName, $domain, 'json');
+        $answer           = $this->send('v-list-web-domain', $this->userName, $domain, 'json');
 
         $data = json_decode($answer, true);
 
-        $ftpU = strpos($data[$domain]['FTP_USER'], ':');
+        $ftpU    = strpos($data[$domain]['FTP_USER'], ':');
         $ftpPath = strpos($data[$domain]['FTP_PATH'], ':');
 
-        if ($ftpU !== false) {
-            $ftAr = explode(':', $data[$domain]['FTP_USER']);
+        if (false !== $ftpU) {
+            $ftAr                      = explode(':', $data[$domain]['FTP_USER']);
             $data[$domain]['FTP_USER'] = $ftAr;
         }
-        if ($ftpPath !== false) {
-            $ftpP = explode(':', $data[$domain]['FTP_PATH']);
+        if (false !== $ftpPath) {
+            $ftpP                      = explode(':', $data[$domain]['FTP_PATH']);
             $data[$domain]['FTP_PATH'] = $ftpP;
         }
 
@@ -41,8 +40,8 @@ trait Web
     public function listWebDomain()
     {
         $this->returnCode = 'no';
-        $answer = $this->send('v-list-web-domains', $this->userName, 'json');
-        $data = json_decode($answer, true);
+        $answer           = $this->send('v-list-web-domains', $this->userName, 'json');
+        $data             = json_decode($answer, true);
 
         return $data;
     }
@@ -50,9 +49,8 @@ trait Web
     /**
      * Add Web Domains.
      *
-     * @param $domain
-     * @param $ip
-     *
+     * @param  $domain
+     * @param  $ip
      * @return mixed
      */
     public function addWebDomain($domain, $ip)
@@ -63,9 +61,8 @@ trait Web
     /**
      * Support DNS.
      *
-     * @param $domain
-     * @param $ip
-     *
+     * @param  $domain
+     * @param  $ip
      * @return mixed
      */
     public function addDns($domain, $ip)
@@ -76,8 +73,7 @@ trait Web
     /**
      * Support Mail.
      *
-     * @param $domain
-     *
+     * @param  $domain
      * @return mixed
      */
     public function addMail($domain)
@@ -99,9 +95,8 @@ trait Web
     /**
      * Support Alias DNS.
      *
-     * @param $domain
-     * @param $alias
-     *
+     * @param  $domain
+     * @param  $alias
      * @return mixed
      */
     public function addDnsAlias($domain, $alias)
@@ -112,9 +107,8 @@ trait Web
     /**
      * Delete www. alias if it wasn't found.
      *
-     * @param $domain
-     * @param $alias
-     *
+     * @param  $domain
+     * @param  $alias
      * @return mixed
      */
     public function deleteWebDomainAlias($domain, $alias)
@@ -125,11 +119,10 @@ trait Web
     /**
      * Add FTP domain.
      *
-     * @param $domain
-     * @param $ftpUserName
-     * @param $ftpPassword
-     * @param $ftpPath
-     *
+     * @param  $domain
+     * @param  $ftpUserName
+     * @param  $ftpPassword
+     * @param  $ftpPath
      * @return mixed
      */
     public function addFtpDomain($domain, $ftpUserName, $ftpPassword, $ftpPath)
@@ -141,9 +134,8 @@ trait Web
     /**
      * Add proxy support.
      *
-     * @param $domain
-     * @param $ext
-     *
+     * @param  $domain
+     * @param  $ext
      * @return mixed
      */
     public function addDomainProxy($domain, $ext)
@@ -154,8 +146,7 @@ trait Web
     /**
      * Delete domain.
      *
-     * @param $domain
-     *
+     * @param  $domain
      * @return mixed
      */
     public function deleteDomain($domain)
@@ -166,9 +157,8 @@ trait Web
     /**
      * Chane dns domain IP.
      *
-     * @param $domain
-     * @param $ip
-     *
+     * @param  $domain
+     * @param  $ip
      * @return mixed
      */
     public function changeWebDomainIp($domain, $ip)
@@ -179,9 +169,8 @@ trait Web
     /**
      * Delete web domain.
      *
-     * @param $domain
-     * @param $ftpUserName
-     *
+     * @param  $domain
+     * @param  $ftpUserName
      * @return mixed
      */
     public function deleteWebDomain($domain, $ftpUserName)
@@ -192,10 +181,9 @@ trait Web
     /**
      * Change web domain.
      *
-     * @param $domain
-     * @param $ftpUserName
-     * @param $ftpPath
-     *
+     * @param  $domain
+     * @param  $ftpUserName
+     * @param  $ftpPath
      * @return mixed
      */
     public function changeWebDomain($domain, $ftpUserName, $ftpPath)
@@ -207,10 +195,9 @@ trait Web
     /**
      * Change ftp password.
      *
-     * @param $domain
-     * @param $ftpUserName
-     * @param $password
-     *
+     * @param  $domain
+     * @param  $ftpUserName
+     * @param  $password
      * @return mixed
      */
     public function changeFtpPassword($domain, $ftpUserName, $password)

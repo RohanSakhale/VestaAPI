@@ -1,6 +1,6 @@
 <?php
 
-namespace VestaAPI\Services;
+namespace VestaCP\Traits;
 
 trait Service
 {
@@ -15,8 +15,7 @@ trait Service
     }
 
     /**
-     * @param $query
-     *
+     * @param  $query
      * @return mixed
      */
     public function userSearch($query)
@@ -32,7 +31,7 @@ trait Service
     public function listStats()
     {
         $this->returnCode = 'no';
-        $data = json_decode($this->send('v-list-users-stats', 'json'), true);
+        $data             = json_decode($this->send('v-list-users-stats', 'json'), true);
 
         return array_reverse($data, true);
     }
@@ -68,8 +67,7 @@ trait Service
     }
 
     /**
-     * @param $service
-     *
+     * @param  $service
      * @return mixed
      */
     public function restartService($service)
@@ -78,8 +76,7 @@ trait Service
     }
 
     /**
-     * @param $service
-     *
+     * @param  $service
      * @return mixed
      */
     public function startService($service)
@@ -88,8 +85,7 @@ trait Service
     }
 
     /**
-     * @param $service
-     *
+     * @param  $service
      * @return mixed
      */
     public function stopService($service)
@@ -108,8 +104,7 @@ trait Service
     }
 
     /**
-     * @param $ip
-     *
+     * @param  $ip
      * @return mixed
      */
     public function getIp($ip)
@@ -120,9 +115,8 @@ trait Service
     }
 
     /**
-     * @return mixed
-     *
      * @internal param string $restart
+     * @return mixed
      */
     public function rebuildWebDomains()
     {
@@ -130,9 +124,8 @@ trait Service
     }
 
     /**
-     * @return mixed
-     *
      * @internal param string $restart
+     * @return mixed
      */
     public function rebuildDNSDomains()
     {
@@ -156,9 +149,8 @@ trait Service
     }
 
     /**
-     * @return mixed
-     *
      * @internal param string $restart
+     * @return mixed
      */
     public function rebuildCronJobs()
     {
@@ -174,8 +166,7 @@ trait Service
     }
 
     /**
-     * @param $package
-     *
+     * @param  $package
      * @return mixed
      */
     public function updateSysVesta($package)
